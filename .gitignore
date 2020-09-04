@@ -3,3 +3,5 @@
 \nbproject
 build.xml
 /PTVR18_PassManager/nbproject/private/
+/build/
+/dist/
