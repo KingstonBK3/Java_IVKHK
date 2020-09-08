@@ -11,16 +11,16 @@ import java.util.Objects;
  *
  * @author pupil
  */
-public class Recoures {
+public class Resource {
     private String name;
     private String url;
     private String login;
     private String password;
 
-    public Recoures() {
+    public Resource() {
     }
 
-    public Recoures(String name, String url, String login, String password) {
+    public Resource(String name, String url, String login, String password) {
         this.name = name;
         this.url = url;
         this.login = login;
@@ -77,7 +77,7 @@ public class Recoures {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Recoures other = (Recoures) obj;
+        final Resource other = (Resource) obj;
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
@@ -86,7 +86,7 @@ public class Recoures {
 
     @Override
     public String toString() {
-        return "Recoures{" + "name=" + name + ", url=" + url + ", login=" + login + ", password=" + password + '}';
+        return "Resource{" + "name=" + name + ", url=" + url + ", login=" + login + ", password=" + password + '}';
     }
 
     
