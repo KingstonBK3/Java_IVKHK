@@ -6,9 +6,14 @@
 package ptvr18_passmanager;
 
 import Entity.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import userController.NewResource;
+import userController.SaverToFile;
 
 /**
  *
@@ -16,13 +21,19 @@ import java.util.Scanner;
  */
 class App {
     private List<Resource> listResource = new ArrayList<>();
+    private SaverToFile saverToFile = new SaverToFile();
+    
+    public App(){
+        listResource.addAll(saverToFile.loadListResource());
+    }
+    
     public void run(){
         System.out.println("--- Password Manager ---");
         String repeat = "r";
         do{
             System.out.println("Select option: ");
             System.out.println("0. - Exit.");
-            System.out.println("1. - Add Site.");
+            System.out.println("1. - Add Resource.");
             System.out.println("2. - Sites list.");
             Scanner scanner = new Scanner(System.in);
             int Task = scanner.nextInt();
@@ -33,12 +44,9 @@ class App {
                         break;
                     case 1:
                         System.out.println("Selected first task");
-                        Resource resource  = new Resource();
-                        resource.setName("ivkhk");
-                        resource.setUrl("http://kutsehariduskeskus.ee");
-                        resource.setLogin("admin");
-                        resource.setPassword("admin");
-                        listResource.add(resource);
+                        NewResource newResource = new NewResource();
+                        listResource.add(newResource.createResource());
+                        saverToFile.saveResource(listResource);
                         break;
                     case 2:
                         System.out.println("Selected second task");
