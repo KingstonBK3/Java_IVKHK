@@ -35,7 +35,9 @@ class App {
             System.out.println("0. - Exit.");
             System.out.println("1. - Add Resource.");
             System.out.println("2. - Sites list.");
+            System.out.println("3. - Delete Resource");
             Scanner scanner = new Scanner(System.in);
+            
             int Task = scanner.nextInt();
             scanner.nextLine();
                 switch (Task) {
@@ -54,6 +56,22 @@ class App {
                         for(Resource r : listResource){
                             System.out.println(r.toString());
                         }
+                        break;
+                    case 3:
+                        System.out.println("Selected third task");
+                        System.out.println("List of resources");
+                        int i =1;
+                        for(Resource r : listResource){
+                            System.out.printf("%d. %s ",i,r.getName());
+                        }
+                        System.out.println("Enter resource number:");
+                        int numDeleteResource = scanner.nextInt();
+                        scanner.nextLine();
+                        listResource.remove(numDeleteResource-1);
+                        saverToFile.saveResource(listResource);
+                        break;
+                    default:
+                        System.out.println("Enter number from list.");           
                         break;
 
                 }
